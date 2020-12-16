@@ -1,0 +1,22 @@
+.createPost {
+  margin: 25px 0px;
+  padding: 25px 25px 15px 25px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+}
+
+#inputPostText,
+#inputPostImage {
+  background-color: #e9ebee;
+  border: none;
+}
+
+.createPostHeader {
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 15px;
+}
+
+/* button {
+  display: none;
+} */

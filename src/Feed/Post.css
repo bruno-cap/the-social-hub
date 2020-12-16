@@ -1,0 +1,51 @@
+.post {
+  margin: 25px 0px;
+  padding: 25px 25px 25px 25px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75); /*CHECK: change this */
+}
+
+.postInfo {
+  margin-bottom: 20px;
+}
+
+.post img {
+  max-width: 100%; /* CHECK: double check if needed OR if will be addressed some other way */
+}
+
+.post .postLikeComment {
+  text-align: center;
+  padding: 0px 30px;
+}
+
+.postInfo p,
+.postLikeComment p {
+  margin: 0;
+  padding: 0;
+}
+
+.noOfLikesAndComments {
+  margin-top: 25px;
+}
+
+.noOfLikesAndComments > p {
+  margin-top: 10px;
+}
+
+.postContent {
+  border-bottom: 1px solid lightgray;
+}
+
+.postLikeComment {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.postLikeComment .col {
+  padding: 10px;
+}
+
+.postLikeComment .col:hover {
+  background-color: #e9ebee;
+}

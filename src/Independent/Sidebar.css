@@ -1,0 +1,13 @@
+.sidebar {
+  margin-top: 25px;
+}
+
+.sidebar img {
+  height: auto;
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.sidebar .link {
+  text-decoration: none;
+}
