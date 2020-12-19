@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import Header from "./Independent/Header";
 import Sidebar from "./Independent/Sidebar";
@@ -11,7 +11,6 @@ import Login from "./Credentials/Login";
 import Signup from "./Credentials/Signup";
 import UserList from "./UserList/UserList";
 import NewMessage from "./Messenger/NewMessage";
-import firebase from "firebase";
 import { useAuth } from "./Context/AuthContext";
 import TopScrolling from "./topScrolling";
 import "./App.css";
@@ -24,21 +23,28 @@ function App() {
       {!currentUser ? (
         <>
           <Switch>
+            <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            {/* If !currentUser and the user doesn't type either /login or /signup, render Login */}
             <Login />
           </Switch>
         </>
       ) : (
         <div className="app" style={{ textDecoration: "none" }}>
-          <Switch>
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
-            <Container className="content">
-              <Row>
-                <Col className="justify-content" lg={3} md={12} sm={12}>
-                  <Sidebar key={firebase.auth().currentUser} />
-                </Col>
-                <Col lg={6} md={12}>
+          <Container className="content">
+            <Row>
+              <Col className="justify-content" lg={3} md={12} sm={12}>
+                <Sidebar />
+              </Col>
+              <Col lg={6} md={12}>
+                <Switch>
+                  {/* If user is logged in and type /signup or /login, render "/" */}
+                  <Route exact path="/login">
+                    <Redirect to="/" />
+                  </Route>
+                  <Route exact path="/signup">
+                    <Redirect to="/" />
+                  </Route>
                   <Route exact path="/">
                     <TopScrolling />
                     <CreatePost destinationMural="public" />
@@ -63,14 +69,14 @@ function App() {
                     <TopScrolling />
                     <NewMessage />
                   </Route>
-                </Col>
-                <Col lg={3} md={12}>
-                  <UserList />
-                  <Ads />
-                </Col>
-              </Row>
-            </Container>
-          </Switch>
+                </Switch>
+              </Col>
+              <Col lg={3} md={12}>
+                <UserList />
+                <Ads />
+              </Col>
+            </Row>
+          </Container>
         </div>
       )}
     </>

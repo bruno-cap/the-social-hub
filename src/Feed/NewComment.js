@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import db from "../firebase";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { Form, Row, Col } from "react-bootstrap";
 import { useAuth } from "../Context/AuthContext";
 

@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { Form, Row, Col } from "react-bootstrap";
 import db from "../firebase";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { useAuth } from "../Context/AuthContext";
 import "./NewMessage.css";
 
@@ -53,7 +53,8 @@ function NewMessage(props) {
   };
 
   useEffect(() => {
-    db.collection("users")
+    const unsubscribe = db
+      .collection("users")
       .where("userId", "!=", currentUser.uid)
       .onSnapshot((snapshot) => {
         setUsersList(
@@ -63,10 +64,14 @@ function NewMessage(props) {
           }))
         );
       });
-  }, []);
+    return () => {
+      unsubscribe();
+    };
+  }, [currentUser]);
 
   function retrieveMessages(userToLookup) {
-    db.collection("messages")
+    const unsubscribe = db
+      .collection("messages")
       .where("senderReceiverId", "in", [
         // check for any combination of the logged in user and the user we're chatting with
         currentUser.uid + userToLookup,
@@ -78,25 +83,26 @@ function NewMessage(props) {
           snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
         );
       });
+    return () => {
+      unsubscribe();
+    };
   }
 
   return (
     <div className="newMessage">
-      <Fragment>
-        <Select
-          className="basic-single"
-          classNamePrefix="select"
-          placeholder="Select or type the name of a friend"
-          isClearable="true"
-          isSearchable="true"
-          options={usersList}
-          onChange={handleDestinationChange}
-        />
-      </Fragment>
+      <Select
+        className="basic-single"
+        classNamePrefix="select"
+        placeholder="Select or type the name of a friend"
+        isClearable="true"
+        isSearchable="true"
+        options={usersList}
+        onChange={handleDestinationChange}
+      />
 
       <div className="chatWindow" key={props.userId}>
         {chatMessages.map((item) => (
-          <>
+          <div className="chatMessages" key={item.id}>
             {/* show received messages on the left and sent messages on the right */}
             {item.data.senderReceiverArray[0] === currentUser.uid ? (
               <p style={{ textAlign: "right" }}>
@@ -107,7 +113,7 @@ function NewMessage(props) {
                 <span className="messageReceived">{item.data.content}</span>
               </p>
             )}
-          </>
+          </div>
         ))}
       </div>
 
@@ -126,7 +132,7 @@ function NewMessage(props) {
             <button
               onClick={handleMessageSubmit}
               type="submit"
-              class="btn btn-primary"
+              className="btn btn-primary"
             >
               Send
             </button>

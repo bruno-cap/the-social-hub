@@ -6,7 +6,8 @@ function UserFeed(props) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    db.collection("posts")
+    const unsubscribe = db
+      .collection("posts")
       .where("destinationMural", "==", props.userId)
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
@@ -14,7 +15,11 @@ function UserFeed(props) {
           snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
         );
       });
-  }, []);
+
+    return () => {
+      unsubscribe();
+    };
+  }, [props.userId]);
 
   return (
     <div className="userMural">

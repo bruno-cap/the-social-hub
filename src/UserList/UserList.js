@@ -10,14 +10,18 @@ function UserList() {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    db.collection("users")
+    const unsubscribe = db
+      .collection("users")
       .where("userId", "!=", currentUser.uid)
       .onSnapshot((snapshot) => {
         setUserList(
           snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
         );
       });
-  }, []);
+    return () => {
+      unsubscribe();
+    };
+  }, [currentUser]);
 
   return (
     <div className="userList">

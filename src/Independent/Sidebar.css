@@ -11,3 +11,7 @@
 .sidebar .link {
   text-decoration: none;
 }
+
+#bottomOptions {
+  margin-left: -12px;
+}

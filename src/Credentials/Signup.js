@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import db from "../firebase";
 import "./Signup.css";
 

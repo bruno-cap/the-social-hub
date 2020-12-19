@@ -7,7 +7,7 @@
   font-size: 14px;
 }
 
-.comment span {
+span.commentContent {
   font-size: 16px;
   border-radius: 20px;
   padding: 5px 10px;

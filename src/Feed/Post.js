@@ -3,11 +3,10 @@ import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import ThumbUpAltRoundedIcon from "@material-ui/icons/ThumbUpAltRounded";
 import { Avatar } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import "./Post.css";
 import { Container, Row, Col } from "react-bootstrap";
 import db from "../firebase";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import Comments from "./Comments";
 import NewComment from "./NewComment";
 import { useAuth } from "../Context/AuthContext";
@@ -53,7 +52,8 @@ function Post(props) {
 
   useEffect(() => {
     // load comment list
-    db.collection("comments")
+    const unsubscribe = db
+      .collection("comments")
       .where("postId", "==", props.postId) // use postId passed as props by parent
       .orderBy("date")
       .onSnapshot((snapshot) => {
@@ -61,7 +61,10 @@ function Post(props) {
           snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
         );
       });
-  }, []);
+    return () => {
+      unsubscribe();
+    };
+  }, [props.postId]);
 
   return (
     <div className="post">
@@ -111,23 +114,27 @@ function Post(props) {
       <Container className="postLikeComment">
         <Row>
           <Col>
-            <Link
-              // to=""
-              onClick={addLike}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <ThumbUpAltOutlinedIcon /> Like
-            </Link>
+            <p>
+              <span
+                className="looksLikeLink"
+                onClick={addLike}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <ThumbUpAltOutlinedIcon /> Like
+              </span>
+            </p>
           </Col>
 
           <Col>
-            <Link
-              // to=""
-              onClick={addComment}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <ChatBubbleOutlineOutlinedIcon /> Comment
-            </Link>
+            <p>
+              <span
+                className="looksLikeLink"
+                onClick={addComment}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <ChatBubbleOutlineOutlinedIcon /> Comment
+              </span>
+            </p>
           </Col>
         </Row>
       </Container>

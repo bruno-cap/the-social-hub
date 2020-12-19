@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import { Avatar } from "@material-ui/core";
 import db from "../firebase";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { useAuth } from "../Context/AuthContext";
 import "./CreatePost.css";
 
@@ -61,7 +61,7 @@ function CreatePost(props) {
                   <button
                     onClick={handleSubmit}
                     type="submit"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                   >
                     Post
                   </button>

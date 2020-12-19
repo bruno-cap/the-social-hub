@@ -1,7 +1,6 @@
 import React from "react";
 import db from "../firebase";
-import firebase from "firebase";
-import { Link } from "react-router-dom";
+import firebase from "firebase/app";
 import ThumbUpAltRoundedIcon from "@material-ui/icons/ThumbUpAltRounded";
 import { useAuth } from "../Context/AuthContext";
 import "./Comments.css";
@@ -59,13 +58,13 @@ function Comments(props) {
         )}
       </p>
       <p>
-        <Link
-          // to=""
+        <span
+          className="looksLikeLink"
           onClick={addLike}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           Like{" "}
-        </Link>{" "}
+        </span>{" "}
         {props.date &&
           props.date.toDate().getMonth() +
             1 +

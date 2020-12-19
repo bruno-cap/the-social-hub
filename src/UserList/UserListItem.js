@@ -20,13 +20,13 @@ function UserListItem(props) {
         xl={3}
         xs={12}
       >
-        <Link
-          // to=""
+        <span
+          className="looksLikeLink"
           onClick={redirect}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <Avatar src={props.photo} alt="" />
-        </Link>
+        </span>
       </Col>
       <Col
         className="mt-2 d-flex justify-content-md justify-content-center"

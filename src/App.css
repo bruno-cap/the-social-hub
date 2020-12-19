@@ -4,3 +4,13 @@
   text-decoration: none;
   min-height: 100%;
 }
+
+span.looksLikeLink {
+  cursor: pointer;
+  color: rgb(0, 123, 255);
+}
+
+span.looksLikeLink:hover {
+  cursor: pointer;
+  color: rgb(0, 86, 179);
+}

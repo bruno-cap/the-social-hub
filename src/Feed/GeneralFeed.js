@@ -6,7 +6,8 @@ function GeneralFeed() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    db.collection("posts")
+    const unsubscribe = db
+      .collection("posts")
       .where("destinationMural", "==", "public")
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
@@ -14,6 +15,10 @@ function GeneralFeed() {
           snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
         );
       });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   return (
