@@ -1,8 +1,37 @@
 .app {
-  background-color: #e9ebee;
-  background-size: cover;
+  background-color: rgb(233, 235, 238);
+}
+
+.appBody {
+  background-color: rgb(233, 235, 238);
   text-decoration: none;
-  min-height: 100%;
+  padding-top: 85px;
+}
+
+.app p {
+  font-size: 14px;
+}
+
+.unevenRoundedBox {
+  padding: 25px 25px 15px 25px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+}
+
+.evenRoundedBox {
+  padding: 25px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+}
+
+.looksLikeLink {
+  cursor: pointer;
+}
+
+.looksLikeLink:hover {
+  cursor: pointer;
 }
 
 span.looksLikeLink {
@@ -13,4 +42,76 @@ span.looksLikeLink {
 span.looksLikeLink:hover {
   cursor: pointer;
   color: rgb(0, 86, 179);
+}
+
+.bottomFixed {
+  position: fixed;
+  bottom: 25px; /* there is a 25px margin-bottom to make it more visually appealing */
+}
+.topFixed {
+  position: fixed;
+  top: 85px; /* header: 60px + margin-top: 25px */
+}
+
+.paddingToMakeRoomForFixedActionBox {
+  padding-top: 125px;
+}
+
+#userMuralContentBelowActionBar {
+  margin-top: 17px;
+}
+
+/* extra large screens */
+@media only screen and (min-width: 1200px) {
+  .app p {
+    font-size: 15px;
+  }
+
+  .bottomFixed {
+    width: 255px;
+  }
+  .topFixed {
+    width: 255px;
+  }
+
+  #friendSideInMurals {
+    padding-right: 22px !important;
+  }
+}
+
+/* large screens */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .app p {
+    font-size: 14px;
+  }
+  .bottomFixed {
+    width: 210px;
+  }
+  .topFixed {
+    width: 210px;
+  }
+
+  #friendSideInMurals {
+    padding-right: 22px !important;
+  }
+}
+
+/* small screens */
+@media only screen and (max-width: 575px) {
+  .appBody {
+    padding-top: 58px;
+  }
+
+  .unevenRoundedBox {
+    padding: 15px 15px 10px 15px;
+  }
+
+  .evenRoundedBox {
+    padding: 15px;
+  }
+
+  #centerColumn {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
 }

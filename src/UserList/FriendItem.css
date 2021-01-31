@@ -1,0 +1,22 @@
+.friendItem {
+  margin-bottom: 25px;
+}
+
+/* screens sm and higher */
+@media only screen and (min-width: 576px) {
+  #friendShipStatus {
+    margin: auto;
+  }
+}
+
+/* xs screens */
+@media only screen and (max-width: 575px) {
+  #friendShipStatus {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .friendItem {
+    margin-bottom: 8px;
+  }
+}

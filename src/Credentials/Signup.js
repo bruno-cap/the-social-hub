@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
 import firebase from "firebase/app";
 import db from "../firebase";
 import "./Signup.css";
@@ -12,20 +13,18 @@ function Signup() {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const photoUrlRef = useRef();
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Both passwords have to match!");
+      return setErrorMessage("Both passwords have to match!");
     }
 
     try {
-      setError("");
-      setLoading(true);
+      setErrorMessage("");
       await firebase
         .auth()
         .createUserWithEmailAndPassword(
@@ -48,38 +47,40 @@ function Signup() {
               requestsSent: [],
             });
 
-          // update display name and picture (to prevent excessive querying)
-          firebase
-            .auth()
-            .currentUser.updateProfile({
-              displayName:
-                firstNameRef.current.value + " " + lastNameRef.current.value,
-              photoURL: photoUrlRef.current.value
-                ? photoUrlRef.current.value
-                : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png",
-            })
-            .then(function () {
-              console.log("Updated successfully");
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
+          firebase.auth().currentUser.updateProfile({
+            displayName:
+              firstNameRef.current.value + " " + lastNameRef.current.value,
+            photoURL: photoUrlRef.current.value
+              ? photoUrlRef.current.value
+              : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png",
+          });
         })
         .catch((error) => {
-          console.log("Error when updating");
+          setErrorMessage("Error updating user document, please try again.");
         });
     } catch {
-      setError("Failed to create an account");
+      setErrorMessage("Error creating account, please try again.");
     }
 
-    setLoading(false);
     history.push("/");
   }
 
   return (
-    <div className="signup mx-auto">
+    <div className="signup evenRoundedBox mx-auto">
+      <div className="text-center">
+        <Avatar
+          src="/Images/mainLogo.png"
+          alt="The Social Hub Logo"
+          style={{
+            width: "200px",
+            height: "200px",
+            display: "inline-block",
+            marginBottom: "30px",
+          }}
+        />
+      </div>
       <h2 className="text-center mb-4">Sign Up</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
+      {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
 
       <Form onSubmit={handleSubmit}>
         <Form.Group id="firstName">
@@ -112,7 +113,7 @@ function Signup() {
           <Form.Control type="password" ref={passwordConfirmRef} required />
         </Form.Group>
 
-        <Button disabled={loading} className="w-100" type="submit">
+        <Button className="w-100" type="submit">
           Sign Up
         </Button>
       </Form>

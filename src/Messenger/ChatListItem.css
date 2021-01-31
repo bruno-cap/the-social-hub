@@ -1,0 +1,39 @@
+.chatListItemContainer {
+  padding: -15px;
+}
+
+.chatListItem {
+  padding: 10px;
+}
+
+.chatListItem p {
+  margin: 0;
+}
+
+.chatListItem:hover {
+  background-color: rgb(233, 235, 237);
+}
+
+.sender {
+  font-size: 16px;
+}
+
+.contentAndDate {
+  font-size: 14px;
+}
+
+/* large screens */
+@media only screen and (min-width: 992px) {
+  .chatListItemText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* medium and smaller screens */
+@media only screen and (max-width: 991px) {
+  .chatListItemText {
+    display: none;
+  }
+}

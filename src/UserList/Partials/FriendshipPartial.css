@@ -1,0 +1,16 @@
+.friendshipPartial {
+  display: inline-block;
+}
+
+.friendshipPartial p {
+  display: inline-block;
+  margin: 0;
+}
+
+.positiveResponse {
+  color: green;
+}
+
+.negativeResponse {
+  color: red;
+}

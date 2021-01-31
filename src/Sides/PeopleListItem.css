@@ -1,0 +1,29 @@
+.peopleListItem {
+  margin-bottom: 15px;
+  width: 95px;
+}
+
+.peopleListItem:last-of-type {
+  margin-bottom: 0;
+}
+
+.friendSideAvatar {
+  height: 70px !important;
+  width: 70px !important;
+}
+
+.friendSideParagraph {
+  width: 70px;
+}
+
+/* large screens */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .peopleListItem {
+    width: 80px;
+  }
+
+  .friendSideAvatar {
+    height: 60px !important;
+    width: 60px !important;
+  }
+}

@@ -1,32 +1,45 @@
-.newMessage {
-  margin-top: 30px;
-  margin: 25px 0px;
-  padding: 25px 25px 15px 25px;
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
-}
-
-.chatWindow {
-  margin-top: 20px;
-  height: 50vh;
+#chatWindow {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 180px);
   overflow: auto;
+  background-color: rgb(248, 250, 252);
+  padding: 5px;
+  z-index: -1;
 }
 
-.chatWindow p {
-  margin-bottom: 8px;
+#messageToSend {
+  z-index: 1;
 }
 
-.chatWindow span {
+#chatWindow p {
+  margin-bottom: 5px;
+}
+
+#chatWindow span {
   border-radius: 20px;
   padding: 5px 10px;
 }
 
-.messageSent {
+#messageSent {
   background-color: rgb(0, 123, 255);
   color: white;
 }
 
-.messageReceived {
-  background-color: lightgray;
+#messageReceived {
+  background-color: rgb(233, 235, 237);
+}
+
+.commentAuthorAndContent {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  max-width: 60%;
+}
+
+/* medium screens */
+@media only screen and (max-width: 576px) {
+  #chatWindow {
+    height: calc(100vh - 146px);
+  }
 }

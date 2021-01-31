@@ -1,0 +1,17 @@
+#messenger {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -25px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+
+/* medium screens */
+@media only screen and (max-width: 576px) {
+  #messenger {
+    margin-top: -5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}

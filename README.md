@@ -1,6 +1,6 @@
 ﻿## The Social Hub – A social media app concept
 
-Check it out live at [https://social-media-app-bc88a.web.app](https://social-media-app-bc88a.web.app) :)
+Check it out live at [https://the-social-hub-c8775.web.app](https://the-social-hub-c8775.web.app) :)
 
 ### `Technologies used`
 

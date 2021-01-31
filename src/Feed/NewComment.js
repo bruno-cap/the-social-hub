@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import db from "../firebase";
-import firebase from "firebase/app";
 import { Form, Row, Col } from "react-bootstrap";
+import { addComment } from "../HelperFunctions/PostAndCommentHelpers";
 import { useAuth } from "../Context/AuthContext";
 
 function NewComment(props) {
   const { currentUser } = useAuth();
-
   const [commentContent, setCommentContent] = useState("");
 
   const handleCommentChange = (e) => {
@@ -18,32 +16,8 @@ function NewComment(props) {
     // only submit if there's content
     if (commentContent !== "") {
       // add content document to 'comments' collection
-      db.collection("comments").add({
-        content: commentContent,
-        date: firebase.firestore.FieldValue.serverTimestamp(),
-        likes: [],
-        postId: props.postId,
-        // user info
-        profilePic: currentUser.photoURL,
-        userId: currentUser.uid,
-        username: currentUser.displayName,
-      });
-
-      // add notification entry ONLY if you're NOT commenting on your own post.
-      if (props.userId !== currentUser.uid) {
-        db.collection("notifications").add({
-          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          senderProfilePic: currentUser.photoURL,
-          senderUserId: currentUser.uid,
-          senderUsername: currentUser.displayName,
-          receiverUserId: props.userId,
-          action: "commentPost",
-          isRead: false,
-          objectId: props.postId,
-        });
-      }
-
-      // resets comment field after submitting message
+      addComment(commentContent, props.postId, currentUser, props.userId);
+      // reset state value
       setCommentContent("");
     }
   };
@@ -59,6 +33,7 @@ function NewComment(props) {
               placeholder="Write a comment..."
               value={commentContent}
               onChange={handleCommentChange}
+              style={{ borderRadius: "10px" }}
             />
           </Col>
         </Row>

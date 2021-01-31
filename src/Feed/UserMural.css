@@ -1,0 +1,7 @@
+/* small screens */
+@media only screen and (max-width: 575px) {
+  #userMuralContainer {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}

@@ -1,0 +1,10 @@
+.friendsSide {
+  margin-bottom: 25px;
+}
+
+/* small screens */
+@media only screen and (max-width: 575px) {
+  .friendsSide {
+    margin-bottom: 8px;
+  }
+}

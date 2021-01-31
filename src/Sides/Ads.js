@@ -19,9 +19,9 @@ function Ads() {
   }, []);
 
   return (
-    <div className="ads">
+    <div className="ads evenRoundedBox">
       <p>Advertise with us!</p>
-      <img src={adToDisplay} alt="" />
+      <img src={adToDisplay} alt="Ad Pic" />
     </div>
   );
 }

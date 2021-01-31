@@ -1,0 +1,74 @@
+.userMuralInfo {
+  text-align: center;
+}
+
+.actionBox {
+  margin-bottom: 8px;
+}
+
+#muralProfilePic {
+  height: 170px;
+  width: 170px;
+}
+
+#userPicAndInitials {
+  display: none;
+}
+
+.showUserPicAndInitials {
+  display: inline-block !important;
+}
+
+#messageIconText {
+  display: inline-block;
+}
+
+.hideMessageIconText {
+  display: none !important;
+}
+
+.userInfoFixed {
+  position: fixed;
+  top: 60px;
+  z-index: 1;
+  background-color: rgb(233, 235, 237);
+}
+
+.addPaddingToContent {
+  padding-top: 80px;
+}
+
+/* extra large screens */
+@media only screen and (min-width: 1200px) {
+  #muralProfilePic {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+/* large screens */
+@media only screen and (min-width: 992px) {
+  #muralProfilePic {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+/* medium screens */
+@media only screen and (max-width: 767px) {
+  h2 {
+    font-size: 26px !important;
+  }
+}
+
+/* small screens */
+@media only screen and (max-width: 575px) {
+  .actionBox {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  .userInfoFixed {
+    top: 52px;
+  }
+}

@@ -1,22 +1,28 @@
 .createPost {
-  margin: 25px 0px;
-  padding: 25px 25px 15px 25px;
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  margin-bottom: 25px;
 }
 
 #inputPostText,
 #inputPostImage {
   background-color: #e9ebee;
-  border: none;
+  border-radius: 10px;
+  border-color: white;
 }
 
-.createPostHeader {
-  border-bottom: 1px solid lightgray;
-  margin-bottom: 15px;
+.hideImageField {
+  overflow: hidden;
+  height: 0px;
+  transition: height 0.2s ease-in-out;
 }
 
-/* button {
-  display: none;
-} */
+.showImageField {
+  height: 46px;
+  transition: height 0.2s ease-in-out;
+}
+
+/* small screens */
+@media only screen and (max-width: 575px) {
+  .createPost {
+    margin-bottom: 8px;
+  }
+}
