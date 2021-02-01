@@ -92,6 +92,14 @@ function CreatePost(props) {
               placeholder="Img URL"
             />
           </div>
+
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="btn btn-primary"
+          >
+            Post
+          </button>
         </Form>
 
         <CropOriginalIcon
