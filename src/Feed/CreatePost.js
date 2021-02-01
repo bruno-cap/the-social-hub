@@ -97,6 +97,7 @@ function CreatePost(props) {
             onClick={handleSubmit}
             type="submit"
             className="btn btn-primary"
+            style={{ visibility: "hidden" }}
           >
             Post
           </button>
