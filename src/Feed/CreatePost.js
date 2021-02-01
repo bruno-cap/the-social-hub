@@ -61,7 +61,11 @@ function CreatePost(props) {
             />
           </Link>
         )}
-        <Form className="flex-grow-1 px-2" style={{ marginRight: "-5px" }}>
+        <Form
+          className="flex-grow-1 px-2"
+          onSubmit={handleSubmit}
+          style={{ marginRight: "-5px" }}
+        >
           <Form.Control
             className="d-none d-md-block d-lg-none d-xl-block" // only hidden on lg screens
             id="inputPostText"
@@ -89,11 +93,7 @@ function CreatePost(props) {
             />
           </div>
 
-          <button
-            onClick={handleSubmit}
-            type="submit"
-            className="d-none btn btn-primary"
-          >
+          <button type="submit" className="d-none btn btn-primary">
             Post
           </button>
         </Form>
