@@ -92,10 +92,6 @@ function CreatePost(props) {
               placeholder="Img URL"
             />
           </div>
-
-          <button type="submit" className="d-none btn btn-primary">
-            Post
-          </button>
         </Form>
 
         <CropOriginalIcon
