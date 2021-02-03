@@ -15,7 +15,6 @@ function NewMessage(props) {
   const [usersList, setUsersList] = useState([]);
   const [chatMessages, setChatMessages] = useState([]);
   const [defaultValue, setDefaultValue] = useState([]);
-
   let history = useHistory();
 
   const handleDestinationChange = (e) => {
@@ -129,6 +128,7 @@ function NewMessage(props) {
   useEffect(() => {
     // focus on the input field (in case the user wants to send more messages)
     document.getElementById("messageInputField").focus();
+
     if (friendToMessage) {
       // element.scrollIntoView();
       const unsubscribe = db

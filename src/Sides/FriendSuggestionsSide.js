@@ -38,7 +38,7 @@ function FriendSuggestionsSide() {
   return (
     <div className="friendSuggestionsSide unevenRoundedBox">
       <div className="d-flex justify-content-between">
-        <p className="">People</p>
+        <p className="">Other People</p>
         <Link
           to={"/addfriends"}
           style={{

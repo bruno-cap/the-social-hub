@@ -94,10 +94,11 @@ function CreatePost(props) {
           </div>
 
           <button
+            id="submitPostButton"
+            className="btn btn-primary"
             onClick={handleSubmit}
             type="submit"
-            className="btn btn-primary"
-            style={{ visibility: "hidden" }}
+            style={{ visibility: "hidden", position: "absolute" }}
           >
             Post
           </button>

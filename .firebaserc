@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "the-social-hub-c8775",
-    "the-social-hub": "the-social-hub-c8775"
+    "default": "the-social-hub-c8775"
   }
 }

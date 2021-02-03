@@ -38,8 +38,10 @@
 }
 
 /* medium screens */
-@media only screen and (max-width: 576px) {
+/* @media only screen and (max-width: 576px) { */
+@media only screen and (max-width: 768px) {
   #chatWindow {
-    height: calc(100vh - 146px);
+    /* height: calc(100vh - 146px); */
+    height: calc(100vh - 260px) !important;
   }
 }
